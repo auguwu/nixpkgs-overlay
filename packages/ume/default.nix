@@ -9,18 +9,18 @@
   darwin,
 }: let
   outputHashes = {
-    "azalia-0.1.0" = "sha256-9VE79T2Yry5QhYqD3BoHsq5//4V05CEih1aK2MCXJo0=";
+    "azalia-0.1.0" = "sha256-y0crnoet3Jg1+UA86K6ucPb6tv98f895vyjt02dgAAE=";
   };
 in
   rustPlatform.buildRustPackage rec {
-    version = "4.0.5";
+    version = "4.0.6";
     pname = "ume";
 
     src = fetchFromGitHub {
       owner = "auguwu";
       repo = "ume";
       rev = version;
-      hash = "sha256-+D0Th1ysAZeoktpnRFtAvGXHxt5YnGW1Ydr7K5h2hpQ=";
+      hash = "sha256-Rt9oSTVil1I2RlPOxfkARvf+aWtygQx77mNHl/4Qjww=";
     };
 
     nativeBuildInputs = [pkg-config installShellFiles];

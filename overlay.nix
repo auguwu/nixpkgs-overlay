@@ -1,3 +1,3 @@
 self: super: {
-  ume = super.callPackage ./packages/ume.nix {};
+  ume = super.callPackage ./packages/ume {};
 }

@@ -17,12 +17,7 @@
       };
   in {
     overlays.default = import ./overlay.nix;
-    packages = eachSystem (system: let
-      pkgs = nixpkgsFor system;
-    in {
-      ume = pkgs.callPackage ./packages/ume {};
-    });
-
+    packages = eachSystem (system: (import ./overlay.nix {} (nixpkgsFor system)));
     formatter = eachSystem (system: (nixpkgsFor system).alejandra);
   };
 }
