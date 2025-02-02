@@ -27,8 +27,8 @@ in {
 
     stateDir = mkOption {
       type = str;
-      default = "/var/lib/noel/ume/images";
-      description = "Directory to hold images in";
+      default = "/var/lib/noel/ume";
+      description = "Directory to hold state data in";
     };
 
     configuration = {
@@ -66,7 +66,7 @@ in {
 
       preStart = ''
         ## Generate the `ume.toml` file if it doesn't exist
-        if ! [ -f "${cfg.stateDir}" ]; then
+        if ! [ -f "${cfg.stateDir}/ume.toml" ]; then
           echo -e "\n${format.generate "ume.toml" cfg.configuration}"
             >> "${cfg.stateDir}/ume.toml"
         fi
