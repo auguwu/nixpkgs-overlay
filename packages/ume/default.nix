@@ -20,7 +20,7 @@ in
       owner = "auguwu";
       repo = "ume";
       rev = version;
-      hash = "sha256-Rt9oSTVil1I2RlPOxfkARvf+aWtygQx77mNHl/4Qjww=";
+      hash = "sha256-/vmT3vOYwucOf3++m0bzjNQh+x5/3n9AJXW3SL547H4=";
     };
 
     nativeBuildInputs = [pkg-config installShellFiles];

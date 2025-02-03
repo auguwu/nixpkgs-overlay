@@ -2,15 +2,17 @@
   description = "🐻‍❄️ Noel's `nixpkgs` overlay of packages and services";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default";
   };
 
-  outputs = {
-    nixpkgs,
-    systems,
-    ...
-  }: let
-    eachSystem = nixpkgs.lib.genAttrs (import systems);
+  outputs = {nixpkgs, ...}: let
+    eachSystem = nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+      "x86_64-darwin"
+
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
+
     nixpkgsFor = system:
       import nixpkgs {
         inherit system;
