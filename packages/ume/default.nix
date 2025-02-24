@@ -7,12 +7,12 @@
   fetchFromGitHub,
   rustPlatform,
   darwin,
-}: let
-  outputHashes = {
-    "azalia-0.1.0" = "sha256-y0crnoet3Jg1+UA86K6ucPb6tv98f895vyjt02dgAAE=";
-  };
-in
-  rustPlatform.buildRustPackage rec {
+}: #let
+#   outputHashes = {
+#     "azalia-0.1.0" = "sha256-y0crnoet3Jg1+UA86K6ucPb6tv98f895vyjt02dgAAE=";
+#   };
+# in
+   rustPlatform.buildRustPackage rec {
     version = "4.0.6";
     pname = "ume";
 
@@ -31,10 +31,8 @@ in
         SystemConfiguration
       ]));
 
-    cargoLock = {
-      inherit outputHashes;
-      lockFile = ./Cargo.lock;
-    };
+    useFetchCargoVendor = true;
+    cargoHash = "sha256-vJ8IrqOp0lRgrkQGaDWKPZ3xZjF/p5c4DumU14/d734=";
 
     postInstall = ''
       installShellCompletion --cmd ume \
