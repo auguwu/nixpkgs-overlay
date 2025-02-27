@@ -21,5 +21,17 @@
     overlays.default = import ./overlay.nix;
     packages = eachSystem (system: (import ./overlay.nix {} (nixpkgsFor system)));
     formatter = eachSystem (system: (nixpkgsFor system).alejandra);
+    checks = eachSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+
+        overlays = [(import ./overlay.nix)];
+      };
+    in
+      import ./tests {inherit pkgs;});
+
+    nixosModules = {
+      #ume = ./nixosModules/ume.nix;
+    };
   };
 }

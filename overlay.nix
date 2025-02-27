@@ -1,3 +1,3 @@
-self: super: {
-  ume = super.callPackage ./packages/ume {};
+final: prev: {
+  ume = prev.callPackage ./packages/ume {};
 }
