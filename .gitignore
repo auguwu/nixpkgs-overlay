@@ -17,4 +17,6 @@
 .history
 .ionide
 
+result
 result/
+.nixos-test-history

@@ -4,6 +4,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
+  # Include the binary caches for my own projects and Noelware's as well.
+  nixConfig = {
+    extra-substituters = [
+      # TODO: switch to https://nix.floofy.dev
+      "https://noel.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "noel.cachix.org-1:pQHbMJOB5h5VqYi3RV0Vv0EaeHfxARxgOhE9j013XwQ="
+    ];
+  };
+
   outputs = {nixpkgs, ...}: let
     eachSystem = nixpkgs.lib.genAttrs [
       "x86_64-linux"
@@ -29,9 +41,5 @@
       };
     in
       import ./tests {inherit pkgs;});
-
-    nixosModules = {
-      #ume = ./nixosModules/ume.nix;
-    };
   };
 }
